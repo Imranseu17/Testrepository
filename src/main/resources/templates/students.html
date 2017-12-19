@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Students</title>
+    <link rel="stylesheet" th:href="@{/bootstrap.css}" href="../static/bootstrap.css" />
+</head>
+<body>
+    <h1> List of all students as an unordered List : </h1>
+    <!--<h2 th:text = "${'Student Count: '+studentCount}">Student Count goes here</h2>-->
+    <!--<h2 th:text = "${'Student 0s name: '+student0.studentName}">Student 0's name goes here</h2>-->
+    <!--<h2 th:text = "${students}">All the Students</h2>-->
+    <ul>
+        <li th:each = "student : ${students}"
+            th:text = "${student.studentName}">
+
+        </li>
+    </ul>
+    <h1> List of all students as an table view :  </h1>
+
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>
+                Student ID
+            </th>
+            <th>
+                Student Name
+            </th>
+            <th>
+                Student Cgpa
+            </th>
+        </tr>
+        <tr th:each = "student : ${students}">
+            <!--<td>-->
+                <!--<a th:href="'/student?studentID=' + ${student.studentID}"-->
+                   <!--th:text = "${student.studentID}"></a>-->
+            <!--</td>-->
+            <td>
+                <a th:href = "${'student/'+student.studentID}"
+                   th:text = "${student.studentID}"></a>
+            </td>
+            <td th:text = "${student.studentName}"></td>
+            <td th:text = "${student.studentCgpa}"></td>
+
+        </tr>
+    </table>
+
+</body>
+</html>
